@@ -52,7 +52,7 @@ public class Main {
             } else if (menuvalg == 9) {
                 System.out.println("Programmet afsluttes");
             }
-        } while (menuvalg != 1 && menuvalg !=9 );
+        } while (menuvalg != 1 && menuvalg !=9);
     }
 }
 
