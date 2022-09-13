@@ -13,14 +13,28 @@ public class Superhero {
         this.human = human;
     }
 
-    @Override
-    public String toString() {
-        return "Superhero{" +
-                "realName='" + realName + '\'' +
-                ", heroName=" + heroName +
-                ", creationYear=" + creationYear +
-                ", heroPower='" + heroPower + '\'' +
-                ", human=" + human +
-                '}';
+    public String getHeroName() {
+        return heroName;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public String getHeroPower() {
+        return heroPower;
+    }
+
+    public int getCreationYear() {
+        return creationYear;
+    }
+
+    public String humanStatus() {
+        if (human == true) {
+            return "Ja";
+        } else {
+            return "Nej";
+        }
     }
 }
+

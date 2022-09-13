@@ -7,4 +7,7 @@ public class Database {
         Superhero hero = new Superhero(heroName, heroPower, realName, creationYear, human);
         superheroes.add(hero);
     }
+    public ArrayList<Superhero>getSuperheroes() {
+        return superheroes;
+    }
 }
