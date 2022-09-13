@@ -6,14 +6,17 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         Database database = new Database();
 
-
+    //velkommen besked
         System.out.println("Velkommen til Superhelte-databasen");
+
+    //menu så brugeren kan starte eller afslutte programmet
         int menuvalg;
         do {
             System.out.println("Tast 1 for at oprette ny superhelt");
             System.out.println("Tast 9 for at afslutte");
             menuvalg = scan.nextInt();
 
+    // programmet startes hvis der tastes 1, så brugeren kan lave en superhelt
             if (menuvalg == 1) {
                 System.out.println("Indtast superheltens navn ");
                 String heroName = scan.next();
@@ -27,6 +30,7 @@ public class Main {
                 System.out.println("Hvad er heltens rigtige navn?");
                 String realName = scan.next();
 
+    //loop til ja/nej om superhelten er menneske eller ej
                 boolean human = true;
                 char humanStatus;
                 do {
@@ -41,9 +45,10 @@ public class Main {
                     }
                 } while (humanStatus != 'j' && humanStatus != 'n');
 
-
+    //superhelten bliver gemt ved databasen
                 database.createSuperhero(realName, heroPower, realName, creationYear, human);
                 System.out.println(database.superheroes);
+
             } else if (menuvalg == 9) {
                 System.out.println("Programmet afsluttes");
             }
