@@ -18,11 +18,20 @@ public class Main {
         System.out.println("Hvad er heltens rigtige navn?");
         String realName = scan.next();
 
-        System.out.println("Er " + heroName +  " menneske?");
-        boolean human = scan.nextBoolean();
-
-
-
+        boolean human = true;
+        char humanStatus;
+        do {
+            System.out.println("Er " + heroName + " menneske? (j/n)");
+            humanStatus = scan.next().charAt(0);
+        if (humanStatus == 'j') {
+            human = true;
+            } else if (humanStatus == 'n') {
+                human = false;
+            } else {
+            System.out.println("Ugyldigt. Tast j for ja, eller n for nej");
+        }
+        } while (humanStatus != 'j' && humanStatus != 'n');
 
     }
 }
+
