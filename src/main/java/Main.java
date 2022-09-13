@@ -43,6 +43,7 @@ public class Main {
 
 
                 database.createSuperhero(realName, heroPower, realName, creationYear, human);
+                System.out.println(database.superheroes);
             } else if (menuvalg == 9) {
                 System.out.println("Programmet afsluttes");
             }

@@ -1,13 +1,10 @@
-public class Database {
-    private Superhero[] superheroes;
-    private int heroAmount;
+import java.util.ArrayList;
 
-    public Database() {
-        superheroes = new Superhero[5];
-        heroAmount = 0;
-    }
+public class Database {
+    ArrayList<Superhero> superheroes = new ArrayList<>();
+
     public void createSuperhero(String heroName, String heroPower, String realName, int creationYear, boolean human){
         Superhero hero = new Superhero(heroName, heroPower, realName, creationYear, human);
-        System.out.println(hero);
+        superheroes.add(hero);
     }
 }
