@@ -1,11 +1,21 @@
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
+        Main program = new Main();
+        program.start();
+    }
+    public void start(){
+        udskrivVelkomst();
+    }
+
         Scanner scan = new Scanner(System.in);
         Database database = new Database();
 
-
+    public void udskrivVelkomst() {
         System.out.println("Velkommen til Superhelte-databasen");
+    }
+
+    public void createSuperhero(){
         System.out.println("Indtast superheltens navn ");
         String heroName = scan.next();
 
@@ -32,6 +42,8 @@ public class Main {
         }
         } while (humanStatus != 'j' && humanStatus != 'n');
 
+        database.createSuperhero(realName,heroPower,realName,creationYear,human);
+        udskrivVelkomst();
     }
 }
 
