@@ -12,6 +12,7 @@ public class Main {
         int menuvalg;
         do {
             System.out.println("Tast 1 for at oprette ny superhelt");
+            System.out.println("Tast 2 for at se listen af superhelte");
             System.out.println("Tast 9 for at afslutte");
             menuvalg = scan.nextInt();
 
@@ -29,7 +30,7 @@ public class Main {
                 System.out.println("Hvad er heltens rigtige navn?");
                 String realName = scan.next();
 
-    //loop til ja/nej om superhelten er menneske eller ej
+                //loop til ja/nej om superhelten er menneske eller ej
                 boolean human = true;
                 char humanStatus;
                 do {
@@ -44,9 +45,12 @@ public class Main {
                     }
                 } while (humanStatus != 'j' && humanStatus != 'n');
 
-    //superhelten bliver gemt ved databasen
+                //superhelten bliver gemt ved databasen
                 database.createSuperhero(heroName, heroPower, realName, creationYear, human);
+
+            } else if (menuvalg == 2){
                 for (Superhero superhero : database.getSuperheroes()) {
+                    System.out.println("Liste af superhelte:");
                     System.out.println("---------------------------");
                     System.out.println("Heltenavn: " + superhero.getHeroName());
                     System.out.println("Superkræfter: " + superhero.getHeroPower());
@@ -54,7 +58,7 @@ public class Main {
                     System.out.println("Skabelsesår: " + superhero.getCreationYear());
                     System.out.println("Menneske: " + superhero.humanStatus());
                     System.out.println("---------------------------");
-                }
+            }
 
             } else if (menuvalg == 9) {
                 System.out.println("Programmet afsluttes");
@@ -62,7 +66,7 @@ public class Main {
 
         } while (menuvalg !=9);
 
-        }
     }
+}
 
 
