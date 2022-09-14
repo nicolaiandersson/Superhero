@@ -2,7 +2,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-
         Scanner scan = new Scanner(System.in);
         Database database = new Database();
 
@@ -46,20 +45,22 @@ public class Main {
                 } while (humanStatus != 'j' && humanStatus != 'n');
 
     //superhelten bliver gemt ved databasen
-                database.createSuperhero(realName, heroPower, realName, creationYear, human);
+                database.createSuperhero(heroName, heroPower, realName, creationYear, human);
+                for (Superhero superhero : database.getSuperheroes()) {
+                    System.out.println("---------------------------");
+                    System.out.println("Heltenavn: " + superhero.getHeroName());
+                    System.out.println("Superkræfter: " + superhero.getHeroPower());
+                    System.out.println("Rigtige navn: " + superhero.getRealName());
+                    System.out.println("Skabelsesår: " + superhero.getCreationYear());
+                    System.out.println("Menneske: " + superhero.humanStatus());
+                    System.out.println("---------------------------");
+                }
 
             } else if (menuvalg == 9) {
                 System.out.println("Programmet afsluttes");
             }
-            for (Superhero superhero : database.getSuperheroes()) {
-                System.out.println("Heltenavn: " + superhero.getHeroName());
-                System.out.println("Superkræfter: " + superhero.getHeroPower());
-                System.out.println("Rigtige navn: " + superhero.getRealName());
-                System.out.println("Skabelsesår: " + superhero.getCreationYear());
-                System.out.println("Menneske: " + superhero.humanStatus());
-            }
 
-        } while (menuvalg != 1 && menuvalg !=9);
+        } while (menuvalg !=9);
 
         }
     }
