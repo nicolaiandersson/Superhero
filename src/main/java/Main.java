@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class Main {
 
     Scanner scan = new Scanner(System.in);
@@ -57,7 +58,7 @@ public class Main {
 
                 //superhelten bliver gemt ved databasen
                 database.createSuperhero(heroName, heroPower, realName, creationYear, human);
-
+                //brugeren vælger hvilken metode programmet skal starte
             } else if (menuvalg == 2) {
                 printSuperheroes();
             } else if (menuvalg == 3) {
@@ -65,11 +66,12 @@ public class Main {
             } else if (menuvalg == 9) {
                 System.out.println("Programmet afsluttes");
             }
-
+            //loopet er i gang så længe brugeren ikke har tastet 9
         } while (menuvalg != 9);
 
     }
 
+    //programmet printer listen af skabte superhelte
     public void printSuperheroes() {
         System.out.println("Liste af superhelte:");
         System.out.println("---------------------------");
@@ -84,6 +86,7 @@ public class Main {
 
     }
 
+    //programmet printer den superhelt brugeren søger på
     public void searchHero() {
         for (Superhero superhero : database.getSuperheroes()) {
             System.out.println("Søg på en superhelt: ");
