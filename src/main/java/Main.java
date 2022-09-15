@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class Main {
 
     Scanner scan = new Scanner(System.in);
@@ -10,15 +9,15 @@ public class Main {
         program.start();
     }
 
+    //programmet startes
     public void start() {
         //velkommen besked
         System.out.println("Velkommen til Superhelte-databasen");
         createSuperhero();
     }
 
-
+    //programmet lader brugeren skabe en superhelt
     public void createSuperhero() {
-        //menu så brugeren kan starte eller afslutte programmet
         int menuvalg;
         do {
             System.out.println("Tast 1 for at oprette ny superhelt");
