@@ -1,13 +1,22 @@
 import java.util.Scanner;
 public class Main {
-    public static void main(String[] args) {
 
-        Scanner scan = new Scanner(System.in);
-        Database database = new Database();
+    Scanner scan = new Scanner(System.in);
+    Database database = new Database();
 
+    public static void main(String[] arg) {
+        Main program = new Main();
+        program.start();
+    }
+
+    public void start() {
         //velkommen besked
         System.out.println("Velkommen til Superhelte-databasen");
+        createSuperhero();
+    }
 
+
+    public void createSuperhero() {
         //menu så brugeren kan starte eller afslutte programmet
         int menuvalg;
         do {
@@ -50,44 +59,49 @@ public class Main {
                 database.createSuperhero(heroName, heroPower, realName, creationYear, human);
 
             } else if (menuvalg == 2) {
-                for (Superhero superhero : database.getSuperheroes()) {
-                    System.out.println("Liste af superhelte:");
-                    System.out.println("---------------------------");
-                    System.out.println("Heltenavn: " + superhero.getHeroName());
-                    System.out.println("Superkræfter: " + superhero.getHeroPower());
-                    System.out.println("Rigtige navn: " + superhero.getRealName());
-                    System.out.println("Skabelsesår: " + superhero.getCreationYear());
-                    System.out.println("Menneske: " + superhero.humanStatus());
-                    System.out.println("---------------------------");
-                }
-                } else if (menuvalg == 3) {
-                    for (Superhero superhero : database.getSuperheroes()) {
-                        System.out.println("Søg på en superhelt: ");
-                        String searchTerm = scan.next();
-                        Superhero found = database.searchFor(searchTerm);
-                    if (found == null) {
-                        System.out.println("Superhelt ikke fundet");
-                    }
-                    else {
-                        System.out.println("---------------------------");
-                        System.out.println("Heltenavn: " + found.getHeroName());
-                        System.out.println("Superkræfter: " + found.getHeroPower());
-                        System.out.println("Rigtige navn: " + found.getRealName());
-                        System.out.println("Skabelsesår: " + found.getCreationYear());
-                        System.out.println("Menneske: " + found.humanStatus());
-                        System.out.println("---------------------------");
-                    }
+                printSuperheroes();
+            } else if (menuvalg == 3) {
+                searchHero();
+            } else if (menuvalg == 9) {
+                System.out.println("Programmet afsluttes");
+            }
 
-                }
+        } while (menuvalg != 9);
 
+    }
 
-                } else if (menuvalg == 9) {
-                    System.out.println("Programmet afsluttes");
-                }
+    public void printSuperheroes() {
+        System.out.println("Liste af superhelte:");
+        System.out.println("---------------------------");
+        for (Superhero superhero : database.getSuperheroes()) {
+            System.out.println("Heltenavn: " + superhero.getHeroName());
+            System.out.println("Superkræfter: " + superhero.getHeroPower());
+            System.out.println("Rigtige navn: " + superhero.getRealName());
+            System.out.println("Skabelsesår: " + superhero.getCreationYear());
+            System.out.println("Menneske: " + superhero.humanStatus());
+            System.out.println("---------------------------");
+        }
 
-            } while (menuvalg != 9) ;
+    }
 
+    public void searchHero() {
+        for (Superhero superhero : database.getSuperheroes()) {
+            System.out.println("Søg på en superhelt: ");
+            String searchTerm = scan.next();
+            Superhero found = database.searchFor(searchTerm);
+            if (found == null) {
+                System.out.println("Superhelt ikke fundet");
+            } else {
+                System.out.println("---------------------------");
+                System.out.println("Heltenavn: " + found.getHeroName());
+                System.out.println("Superkræfter: " + found.getHeroPower());
+                System.out.println("Rigtige navn: " + found.getRealName());
+                System.out.println("Skabelsesår: " + found.getCreationYear());
+                System.out.println("Menneske: " + found.humanStatus());
+                System.out.println("---------------------------");
+            }
         }
     }
+}
 
 
