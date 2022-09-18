@@ -21,6 +21,7 @@ public class UserInterface {
             System.out.println("Tast 1 for at oprette ny superhelt");
             System.out.println("Tast 2 for at se listen af superhelte");
             System.out.println("Tast 3 for at søge på en superhelt");
+            System.out.println("Tast 4 for at redigere en gemt superhelt");
             System.out.println("Tast 9 for at afslutte");
             menuvalg = scan.nextInt();
 
@@ -60,6 +61,8 @@ public class UserInterface {
                 printHeroes();
             } else if (menuvalg == 3) {
                 searchHero();
+            } else if (menuvalg == 4) {
+                editHero();
             } else if (menuvalg == 9) {
                 System.out.println("Programmet afsluttes");
             }
@@ -90,7 +93,8 @@ public class UserInterface {
             String searchTerm = scan.next();
             Superhero found = database.searchFor(searchTerm);
             if (found == null) {
-                System.out.println("Superhelt ikke fundet");
+                System.out.println("Superhelt ikke fundet, prøv igen");
+                searchHero();
             } else {
                 System.out.println("---------------------------");
                 System.out.println("Heltenavn: " + found.getHeroName());
@@ -104,9 +108,47 @@ public class UserInterface {
     }
 
     //programmet lader brugeren redigere en skabt superhelt
-    //public void editHero()
-
+    public void editHero() {
+        for (Superhero superhero : database.getSuperheroes()) {
+            System.out.println("Søg på den superhelt du vil redigere: ");
+            String searchTerm = scan.next();
+            Superhero found = database.searchFor(searchTerm);
+            if (found == null) {
+                System.out.println("Superhelt ikke fundet. prøv igen");
+                editHero();
+            } else {
+                System.out.println("Rediger " + superhero.getHeroName());
+                System.out.println("---------------------------");
+                System.out.println("Indtast nyt heltenavn for: " +superhero.getHeroName());
+                String changeHeroName = scan.next();
+                if (!changeHeroName.isEmpty()) {
+                    superhero.editHeroName(changeHeroName);
+                }
+                System.out.println("Indtast nye superkræfter: ");
+                String changeHeroPower = scan.next();
+                if (!changeHeroPower.isEmpty()) {
+                    superhero.editHeroPower(changeHeroPower);
+                }
+                System.out.println("Indtast nyt rigtigt navn: ");
+                String changeRealName = scan.next();
+                if (!changeRealName.isEmpty()) {
+                    superhero.editRealName(changeRealName);
+                }
+                System.out.println("Indtast nyt skabelsesår: ");
+                String changeCreationYear = scan.next();
+                if (!changeCreationYear.isEmpty()) {
+                    superhero.editCreationYear(changeCreationYear);
+                }
+                System.out.println("Indtast ny menneskestatus (j/n): ");
+                String changeHumanStatus = scan.next();
+                if (!changeHumanStatus.isEmpty()) {
+                    superhero.editHumanStatus(changeHumanStatus);
+                }
+                createHero();
+            }
+        }
     }
+}
 
 
 
