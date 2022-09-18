@@ -16,6 +16,7 @@ public class UserInterface {
 
     //programmet lader brugeren skabe en superhelt
     public void createHero() {
+        database.exampleHeroes();
         int menuvalg;
         do {
             System.out.println("Tast 1 for at oprette ny superhelt");
