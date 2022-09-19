@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 public class UserInterface {
 
@@ -16,16 +17,22 @@ public class UserInterface {
     //programmet lader brugeren vælge en metode fra menuen
     public void menu() {
         database.exampleHeroes();
-        int menuvalg;
+        int menuvalg = 0;
+        boolean error = false;
         do {
             System.out.println("Tast 1 for at oprette ny superhelt");
             System.out.println("Tast 2 for at se listen af superhelte");
             System.out.println("Tast 3 for at søge på en superhelt");
             System.out.println("Tast 4 for at redigere en gemt superhelt");
             System.out.println("Tast 9 for at afslutte");
-            menuvalg = scan.nextInt();
-
-            // programmet startes hvis der tastes 1, så brugeren kan lave en superhelt
+            try {
+                menuvalg = scan.nextInt();
+                error = false;
+            } catch (InputMismatchException e) {
+                System.out.println("Du skal taste et tal fra menuen, prøv igen");
+                error = true;
+                scan.nextLine();
+            }
             if (menuvalg == 1) {
                 createHero();
             } else if (menuvalg == 2) {
@@ -38,8 +45,8 @@ public class UserInterface {
                 System.out.println("Programmet afsluttes");
             }
             //loopet er i gang så længe brugeren ikke har tastet 9
-        } while (menuvalg != 9);
-
+        } while (menuvalg != 9 && (error));
+        menu();
     }
 
     //programmet lader brugeren skabe en superhelt
@@ -51,7 +58,19 @@ public class UserInterface {
         String heroPower = scan.next();
 
         System.out.println("Hvilket årstal er " + heroName + " skabt?");
-        int creationYear = scan.nextInt();
+        int creationYear = 0;
+        boolean error = false;
+        do {
+            try {
+                creationYear = scan.nextInt();
+                error = false;
+            } catch (InputMismatchException e) {
+                System.out.println("Du skal skrive et årstal, prøv igen");
+                error = true;
+                scan.nextLine();
+            }
+        } while (error);
+
 
         System.out.println("Hvad er heltens rigtige navn?");
         String realName = scan.next();
