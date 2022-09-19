@@ -11,11 +11,11 @@ public class UserInterface {
     public void start() {
         //velkommen besked
         System.out.println("Velkommen til Superhelte-databasen");
-        createHero();
+        menu();
     }
 
     //programmet lader brugeren skabe en superhelt
-    public void createHero() {
+    public void menu() {
         database.exampleHeroes();
         int menuvalg;
         do {
@@ -28,36 +28,7 @@ public class UserInterface {
 
             // programmet startes hvis der tastes 1, så brugeren kan lave en superhelt
             if (menuvalg == 1) {
-                System.out.println("Indtast superheltens navn ");
-                String heroName = scan.next();
-
-                System.out.println("Indtast superkræfterne " + heroName + " har ");
-                String heroPower = scan.next();
-
-                System.out.println("Hvilket årstal er " + heroName + " skabt?");
-                int creationYear = scan.nextInt();
-
-                System.out.println("Hvad er heltens rigtige navn?");
-                String realName = scan.next();
-
-                //loop til ja/nej om superhelten er menneske eller ej
-                boolean human = true;
-                char humanStatus;
-                do {
-                    System.out.println("Er " + heroName + " menneske? (j/n)");
-                    humanStatus = scan.next().charAt(0);
-                    if (humanStatus == 'j') {
-                        human = true;
-                    } else if (humanStatus == 'n') {
-                        human = false;
-                    } else {
-                        System.out.println("Ugyldigt. Tast j for ja, eller n for nej");
-                    }
-                } while (humanStatus != 'j' && humanStatus != 'n');
-
-                //superhelten bliver gemt ved databasen
-                database.createSuperhero(heroName, heroPower, realName, creationYear, human);
-                //brugeren vælger hvilken metode programmet skal starte
+               createHero();
             } else if (menuvalg == 2) {
                 printHeroes();
             } else if (menuvalg == 3) {
@@ -70,6 +41,38 @@ public class UserInterface {
             //loopet er i gang så længe brugeren ikke har tastet 9
         } while (menuvalg != 9);
 
+    }
+    public void createHero() {
+        System.out.println("Indtast superheltens navn ");
+        String heroName = scan.next();
+
+        System.out.println("Indtast superkræfterne " + heroName + " har ");
+        String heroPower = scan.next();
+
+        System.out.println("Hvilket årstal er " + heroName + " skabt?");
+        int creationYear = scan.nextInt();
+
+        System.out.println("Hvad er heltens rigtige navn?");
+        String realName = scan.next();
+
+        //loop til ja/nej om superhelten er menneske eller ej
+        boolean human = true;
+        char humanStatus;
+        do {
+            System.out.println("Er " + heroName + " menneske? (j/n)");
+            humanStatus = scan.next().charAt(0);
+            if (humanStatus == 'j') {
+                human = true;
+            } else if (humanStatus == 'n') {
+                human = false;
+            } else {
+                System.out.println("Ugyldigt. Tast j for ja, eller n for nej");
+            }
+        } while (humanStatus != 'j' && humanStatus != 'n');
+
+        //superhelten bliver gemt ved databasen
+        database.createSuperhero(heroName, heroPower, realName, creationYear, human);
+        //brugeren vælger hvilken metode programmet skal starte
     }
 
     //programmet printer listen af skabte superhelte
@@ -145,7 +148,7 @@ public class UserInterface {
                 if (!changeHumanStatus.isEmpty()) {
                     superhero.editHumanStatus(changeHumanStatus);
                 }
-                createHero();
+                menu();
             }
         }
     }

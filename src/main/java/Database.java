@@ -7,10 +7,8 @@ public class Database {
         createSuperhero("Iron Man", "Mange penge", "Tony Stark", 1970, true);
         createSuperhero("Hulk", "Stor og stærk", "Ved ikke", 1950, true);
         createSuperhero("Batman", "Flagermus-dragt", "Bruce Wayne", 1980, true);
-
-
-
     }
+
     public void createSuperhero(String heroName, String heroPower, String realName, int creationYear, boolean human) {
         Superhero hero = new Superhero(heroName, heroPower, realName, creationYear, human);
         superheroes.add(hero);
@@ -21,6 +19,7 @@ public class Database {
     }
 
     public Superhero searchFor(String searchTerm) {
+
         for (Superhero superhero : superheroes) {
             String name = superhero.getHeroName().toLowerCase();
             if (name.contains(searchTerm.toLowerCase())) {
