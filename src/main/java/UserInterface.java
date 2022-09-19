@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class UserInterface {
 
 
@@ -14,7 +13,7 @@ public class UserInterface {
         menu();
     }
 
-    //programmet lader brugeren skabe en superhelt
+    //programmet lader brugeren vælge en metode fra menuen
     public void menu() {
         database.exampleHeroes();
         int menuvalg;
@@ -28,7 +27,7 @@ public class UserInterface {
 
             // programmet startes hvis der tastes 1, så brugeren kan lave en superhelt
             if (menuvalg == 1) {
-               createHero();
+                createHero();
             } else if (menuvalg == 2) {
                 printHeroes();
             } else if (menuvalg == 3) {
@@ -42,6 +41,8 @@ public class UserInterface {
         } while (menuvalg != 9);
 
     }
+
+    //programmet lader brugeren skabe en superhelt
     public void createHero() {
         System.out.println("Indtast superheltens navn ");
         String heroName = scan.next();
