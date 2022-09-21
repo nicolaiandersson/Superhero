@@ -50,17 +50,11 @@ class DatabaseTest {
         Database database = new Database();
         //Act
         database.createSuperhero("Spiderman", "Edderkop", "Peter Parker", 1980, true);
-        ArrayList<Superhero> results =  database.searchFor("Spiderman");
+        ArrayList<Superhero> results = database.searchFor("Spiderman");
 
         int expected = 1;
         int actual = results.size();
         //Assert
         assertEquals(expected, actual);
     }
-    @Test
-    void deleteHero() {
-        //database.deleteSuperhero(Ar)
-    }
 }
-
-
