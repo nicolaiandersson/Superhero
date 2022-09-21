@@ -159,10 +159,22 @@ public class UserInterface {
                     superhero.editRealName(changeRealName);
                 }
                 System.out.println("Indtast nyt skabelsesår: ");
-                String changeCreationYear = scan.next();
-                if (!changeCreationYear.isEmpty()) {
-                    superhero.editCreationYear(changeCreationYear);
-                }
+                boolean error = false;
+                do {
+                    try {
+                        String changeCreationYear = scan.nextLine();
+                        if (!changeCreationYear.isEmpty()) {
+                            superhero.editCreationYear(String.valueOf(Integer.parseInt(changeCreationYear)));
+                        }
+                        error = false;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Du skal skrive et årstal, prøv igen");
+                        error = true;
+                        scan.nextLine();
+
+                    }
+                }while (error = true);
+
                 System.out.println("Indtast ny menneskestatus (j/n): ");
                 String changeHumanStatus = scan.next();
                 if (!changeHumanStatus.isEmpty()) {
