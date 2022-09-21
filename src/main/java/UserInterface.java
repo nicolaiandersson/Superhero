@@ -125,7 +125,7 @@ public class UserInterface {
             for (Superhero searchResult : searchResults) {
                 System.out.println(index++ + ": " + searchResult.getHeroName());
             }
-            System.out.println("Vælg en superhelt du vil have skrevet ud: ");
+            System.out.println("Tast det tal der står før navnet på den superhelt du vil redigere, og tryk enter: ");
             int userChoice = 1;
             boolean error = true;
 
@@ -152,7 +152,6 @@ public class UserInterface {
     //programmet lader brugeren redigere en skabt superhelt
     public void editHero() {
             System.out.println("Søg på den superhelt du vil redigere: ");
-            scan.nextLine();
             String searchTerm = scan.nextLine();
             ArrayList<Superhero> searchResults = database.searchFor(searchTerm);
 
