@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class UserInterface {
 
 
-    Scanner scan = new Scanner(System.in);
-    Database database = new Database();
+    private Scanner scan = new Scanner(System.in);
+    private Database database = new Database();
 
 
     //programmet startes
