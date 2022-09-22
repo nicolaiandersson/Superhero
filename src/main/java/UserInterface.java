@@ -214,6 +214,7 @@ public class UserInterface {
         }
     }
 
+    //programmet lader brugeren slette en skabt superhelt
     public void deleteHero() {
         System.out.println("Søg på den superhelt du vil slette: ");
         String searchTerm = scan.nextLine();
