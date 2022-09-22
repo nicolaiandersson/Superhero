@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+
 public class Database {
     ArrayList<Superhero> superheroes = new ArrayList<>();
 
@@ -29,7 +30,8 @@ public class Database {
         }
         return searchResults;
     }
-    public boolean deleteSuperhero (Superhero superhero) {
+
+    public boolean deleteSuperhero(Superhero superhero) {
         getSuperheroes().remove(superhero);
         return true;
     }

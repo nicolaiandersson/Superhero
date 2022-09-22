@@ -7,7 +7,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DatabaseTest {
-   private Database database;
+    private Database database;
 
     @BeforeEach
     public void beforeTest() {
@@ -17,12 +17,12 @@ class DatabaseTest {
         database.createSuperhero("Iron Man", "Mange penge", "Tony Stark", 1970, true);
         database.createSuperhero("Batman", "Flagermus-dragt", "Bruce Wayne", 1980, true);
     }
-    
+
 
     @org.junit.jupiter.api.Test
     void createOneHero() {
         //Arrange
-        int expected = database.getSuperheroes().size()+1;
+        int expected = database.getSuperheroes().size() + 1;
         //Act
         database.createSuperhero("Spiderman", "Edderkoppe-evner", "Peter Parker", 1999, true);
         int actual = database.getSuperheroes().size();
@@ -41,7 +41,7 @@ class DatabaseTest {
         int actual = database.getSuperheroes().size();
 
         //Assert
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -51,7 +51,7 @@ class DatabaseTest {
         //Act
         ArrayList<Superhero> actual = database.searchFor("test");
         //Assert
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @org.junit.jupiter.api.Test
@@ -82,7 +82,7 @@ class DatabaseTest {
         ArrayList<Superhero> results = database.getSuperheroes();
         Superhero superhero = database.getSuperheroes().get(0);
 
-        int expectedSize = results.size()-1;
+        int expectedSize = results.size() - 1;
         boolean expectedResult = true;
 
         //Act
@@ -90,7 +90,7 @@ class DatabaseTest {
         boolean actualResult = database.deleteSuperhero(superhero);
 
         //Assert
-        assertEquals(expectedResult,actualResult);
+        assertEquals(expectedResult, actualResult);
         assertEquals(expectedSize, expectedSize);
     }
 }

@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 public class UserInterface {
 
 
@@ -231,7 +232,7 @@ public class UserInterface {
             System.out.println("Vælg en superhelt fra listen som du vil slette: ");
 
             do {
-                try{
+                try {
                     userChoice = Integer.parseInt(scan.nextLine());
                     Superhero deleteSuperhero = searchResults.get(userChoice - 1);
                     database.deleteSuperhero(deleteSuperhero);
@@ -241,7 +242,7 @@ public class UserInterface {
                     System.out.println("Prøv igen");
                     error = true;
                 }
-            } while (error==true);
+            } while (error == true);
         }
     }
 }

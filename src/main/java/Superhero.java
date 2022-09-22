@@ -40,15 +40,19 @@ public class Superhero {
     public void editHeroName(String editHeroName) {
         this.heroName = editHeroName;
     }
+
     public void editRealName(String editRealName) {
         this.realName = editRealName;
     }
+
     public void editHeroPower(String editHeroPower) {
         this.heroPower = editHeroPower;
     }
+
     public void editCreationYear(String editCreationYear) {
         this.creationYear = Integer.parseInt(editCreationYear);
     }
+
     public void editHumanStatus(String editHumanStatus) {
         this.human = Boolean.parseBoolean(editHumanStatus);
     }
