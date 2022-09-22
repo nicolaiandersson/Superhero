@@ -29,4 +29,8 @@ public class Database {
         }
         return searchResults;
     }
+    public boolean deleteSuperhero (Superhero superhero) {
+        getSuperheroes().remove(superhero);
+        return true;
+    }
 }
