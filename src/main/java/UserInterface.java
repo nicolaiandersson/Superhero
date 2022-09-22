@@ -24,6 +24,7 @@ public class UserInterface {
             System.out.println("Tast 2 for at se listen af superhelte");
             System.out.println("Tast 3 for at søge på en superhelt");
             System.out.println("Tast 4 for at redigere en gemt superhelt");
+            System.out.println("Tast 5 for at slette en gemt superhelt");
             System.out.println("Tast 9 for at afslutte");
             try {
                 menuvalg = scan.nextInt();
@@ -41,6 +42,8 @@ public class UserInterface {
                 searchHero();
             } else if (menuvalg == 4) {
                 editHero();
+            } else if (menuvalg == 5) {
+                deleteHero();
             } else if (menuvalg == 9) {
                 System.out.println("Programmet afsluttes");
             }
@@ -151,66 +154,97 @@ public class UserInterface {
 
     //programmet lader brugeren redigere en skabt superhelt
     public void editHero() {
-            System.out.println("Søg på den superhelt du vil redigere: ");
-            String searchTerm = scan.nextLine();
-            ArrayList<Superhero> searchResults = database.searchFor(searchTerm);
+        System.out.println("Søg på den superhelt du vil redigere: ");
+        String searchTerm = scan.nextLine();
+        ArrayList<Superhero> searchResults = database.searchFor(searchTerm);
 
-            if (searchResults.isEmpty()) {
-                System.out.println("Superhelt ikke fundet. prøv igen");
-                editHero();
-            } else {
-                int index = 1;
-                for (Superhero searchResult : searchResults) {
-                     System.out.println(index++ + ": " + searchResult.getHeroName());
-                }
-                int userChoice = 1;
-                boolean error = true;
-
-                    userChoice = Integer.parseInt(scan.nextLine());
-                    Superhero editHero = searchResults.get(userChoice - 1);
-                    System.out.println("Rediger " + editHero.getHeroName());
-                    System.out.println("---------------------------");
-                    System.out.println("Indtast nyt heltenavn: ");
-                    String changeHeroName = scan.nextLine();
-                    if (!changeHeroName.isEmpty()) {
-                        editHero.editHeroName(changeHeroName);
-                    }
-                    System.out.println("Indtast nye superkræfter: ");
-                    String changeHeroPower = scan.nextLine();
-                    if (!changeHeroPower.isEmpty()) {
-                        editHero.editHeroPower(changeHeroPower);
-                    }
-                    System.out.println("Indtast nyt rigtigt navn: ");
-                    String changeRealName = scan.next();
-                    if (!changeRealName.isEmpty()) {
-                        editHero.editRealName(changeRealName);
-                    }
-                    System.out.println("Indtast nyt skabelsesår: ");
-                    do {
-                        try {
-                            String changeCreationYear = scan.nextLine();
-                            if (!changeCreationYear.isEmpty()) {
-                                editHero.editCreationYear(changeCreationYear);
-                            }
-                            error = false;
-                        } catch (NumberFormatException e) {
-                            System.out.println("Du skal skrive et årstal, prøv igen");
-                            error = true;
-                        }
-                    } while (error == true);
-                    scan.nextLine();
-                    System.out.println("Indtast ny menneskestatus (j/n): ");
-                    String changeHumanStatus = scan.next();
-                    if (!changeHumanStatus.isEmpty()) {
-                        editHero.editHumanStatus(changeHumanStatus);
-                    }
-                System.out.println("Superhelten er gemt");
-                System.out.println("---------------------------");
-                menu();
+        if (searchResults.isEmpty()) {
+            System.out.println("Superhelt ikke fundet, prøv igen");
+            editHero();
+        } else {
+            int index = 1;
+            for (Superhero searchResult : searchResults) {
+                System.out.println(index++ + ": " + searchResult.getHeroName());
             }
+            int userChoice = 1;
+            boolean error = true;
+
+            userChoice = Integer.parseInt(scan.nextLine());
+            Superhero editHero = searchResults.get(userChoice - 1);
+            System.out.println("Rediger " + editHero.getHeroName());
+            System.out.println("---------------------------");
+            System.out.println("Indtast nyt heltenavn: ");
+            String changeHeroName = scan.nextLine();
+            if (!changeHeroName.isEmpty()) {
+                editHero.editHeroName(changeHeroName);
+            }
+            System.out.println("Indtast nye superkræfter: ");
+            String changeHeroPower = scan.nextLine();
+            if (!changeHeroPower.isEmpty()) {
+                editHero.editHeroPower(changeHeroPower);
+            }
+            System.out.println("Indtast nyt rigtigt navn: ");
+            String changeRealName = scan.next();
+            if (!changeRealName.isEmpty()) {
+                editHero.editRealName(changeRealName);
+            }
+            System.out.println("Indtast nyt skabelsesår: ");
+            do {
+                try {
+                    String changeCreationYear = scan.nextLine();
+                    if (!changeCreationYear.isEmpty()) {
+                        editHero.editCreationYear(changeCreationYear);
+                    }
+                    error = false;
+                } catch (NumberFormatException e) {
+                    System.out.println("Du skal skrive et årstal, prøv igen");
+                    error = true;
+                }
+            } while (error == true);
+            scan.nextLine();
+            System.out.println("Indtast ny menneskestatus (j/n): ");
+            String changeHumanStatus = scan.next();
+            if (!changeHumanStatus.isEmpty()) {
+                editHero.editHumanStatus(changeHumanStatus);
+            }
+            System.out.println("Superhelten er gemt");
+            System.out.println("---------------------------");
+            menu();
         }
     }
 
+    public void deleteHero() {
+        System.out.println("Søg på den superhelt du vil slette: ");
+        String searchTerm = scan.nextLine();
+        ArrayList<Superhero> searchResults = database.searchFor(searchTerm);
+
+        if (searchResults.isEmpty()) {
+            System.out.println("Superhelt ikke fundet, prøv igen");
+            deleteHero();
+        } else {
+            int index = 1;
+            for (Superhero searchResult : searchResults) {
+                System.out.println(index++ + ": " + searchResult.getHeroName());
+            }
+            int userChoice = 1;
+            boolean error = true;
+            System.out.println("Vælg en superhelt fra listen som du vil slette: ");
+
+            do {
+                try{
+                    userChoice = Integer.parseInt(scan.nextLine());
+                    Superhero deleteSuperhero = searchResults.get(userChoice - 1);
+                    database.deleteSuperhero(deleteSuperhero);
+                    System.out.println(deleteSuperhero.getHeroName() + " er slettet");
+                    error = false;
+                } catch (NumberFormatException e) {
+                    System.out.println("Prøv igen");
+                    error = true;
+                }
+            } while (error==true);
+        }
+    }
+}
 
 
 
